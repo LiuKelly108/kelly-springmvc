@@ -1,0 +1,36 @@
+手写mvc框架的主要步骤有：
+配置阶段—>初始化阶段—>运行阶段
+**************************以下为具体步骤******************************
+一、配置阶段
+1、在resources下新增application.properties文件，新增以下配置信息：
+scanPackage=com.kelly.demo.mvc  配置扫描的package，用于对package下的类进行扫描
+2、web.xml配置,因为依赖与web容器的项目都是从web.xml开始的。
+添加跳转类（KYDispatcherServlet）的相关servlet配置
+3、自定义 Annotation
+  KYController: 定位到某个类下
+  KYRequestMapping: 类中的方法
+  KYRequestParam : 方法中的参数
+  KYAutowired  :  类中的成员变量
+4、配置Annotation
+
+二、KYDispatcherServlet初始化阶段:init()
+1、通过输入流形式加载配置文件 applciation.properties保存在成员变量contextConfig中
+2、扫描配置的包下所有的类，将类名保存在classNameList容器中
+3、初始化classNameList中的类，将@KYController和@KYServcie注解的类进行实例化，并保存
+在 ioc（类名，类）中。
+4、完成依赖注入:@KYService 注解的成员变量 进行实例注入
+5、初始化handlerMapping,将controller中的访问地址和方法对应起来
+
+三、运行阶段
+1、获得前台页面传递的参数
+2、通过参数的中定位的模块信息，从handlerMapping（url,方法）中找到对应的方法
+3、获得方法中的参数中由@KYRequestParam注解的参数值，将其与前台参数的key对应起来，获得
+前台参数中想用的value,将其放入到一个Object的数组中（按顺序放入）
+4、通过反射，调用具体的action中的方法
+5、将获得结果进行页面输出
+
+
+
+
+
+

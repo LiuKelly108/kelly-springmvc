@@ -1,0 +1,20 @@
+1、定义一个注解： @interface  该注解需要指明：类？方法？或是property?方法入参？
+2、@Target(): 注解修饰的对象范围
+eg.定义多个修饰,可修饰field和method：@Target({ElementType.FIELD, ElementType.METHOD})
+   定义一个修饰,field：@Target(ElementType.FIELD)
+具体详细如下：
+    @Target(ElementType.TYPE)   //接口、类、枚举、注解
+    @Target(ElementType.FIELD) //字段、枚举的常量
+    @Target(ElementType.METHOD) //方法
+    @Target(ElementType.PARAMETER) //方法参数
+    @Target(ElementType.CONSTRUCTOR)  //构造函数
+    @Target(ElementType.LOCAL_VARIABLE)//局部变量
+    @Target(ElementType.ANNOTATION_TYPE)//注解
+    @Target(ElementType.PACKAGE) ///包
+3、@Retention() :注解保留的时间长短
+具体详细如下：
+    @Retention(RetentionPolicy.SOURCE):在源文件中有效
+    @Retention(RetentionPolicy.CLASS):在class文件中有效
+    @Retention(RetentionPolicy.RUNTIME):在运行时有效
+4、@Documented ：标记注解，无成员。用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，
+5、
