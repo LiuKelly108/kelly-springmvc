@@ -1,0 +1,4 @@
+1、IOC : 在srping初始化的时候，使用一个map存储注解修饰的bean
+2、DI  : 通过反射对bean的成员变量进行赋值（注解修饰）
+3、MVC : spring初始化的过程中，使用一个list存储url与类、方法、参数映射的handler。根据前台页面http中
+传递的url，通过url变量list,获得对应的类和方法，并反射执行。
